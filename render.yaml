@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: guess-who
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    autoDeploy: true
+    envVars:
+      - key: PORT
+        value: 3000 

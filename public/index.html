@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Guess Who – Rooms</title>
+	<link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+	<div id="app">
+		<section id="auth">
+			<h1>Guess Who</h1>
+			<div class="card">
+				<label>Nickname</label>
+				<input id="nickname" maxlength="24" placeholder="Your name" />
+				<div class="row">
+					<button id="createRoomBtn">Create Room</button>
+				</div>
+				<div class="row">
+					<input id="roomCodeInput" maxlength="6" placeholder="Room code" />
+					<button id="joinRoomBtn">Join Room</button>
+				</div>
+			</div>
+		</section>
+
+		<section id="lobby" class="hidden">
+			<div class="topbar">
+				<div>
+					<h2>Room <span id="roomCode"></span></h2>
+					<p class="muted">Share this code so friends can join.</p>
+				</div>
+				<div>
+					<button id="copyCodeBtn">Copy Code</button>
+				</div>
+			</div>
+			<div class="columns">
+				<div class="column">
+					<h3>Players</h3>
+					<ul id="playerList" class="list"></ul>
+				</div>
+				<div class="column">
+					<h3>Choose Your Character</h3>
+					<div id="characters" class="grid"></div>
+					<div class="row">
+						<button id="readyBtn" disabled>Ready</button>
+						<button id="startBtn" class="secondary" disabled>Start Game</button>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="game" class="hidden">
+			<div class="topbar">
+				<div>
+					<h2>Room <span id="gameRoomCode"></span></h2>
+					<p class="muted">Turn: <span id="turnName">-</span></p>
+				</div>
+			</div>
+			<div class="columns">
+				<div class="column">
+					<h3>Board (your eliminations)</h3>
+					<div id="board" class="grid"></div>
+				</div>
+				<div class="column">
+					<h3>Ask a question</h3>
+					<div id="askPanel">
+						<input id="questionInput" placeholder="Is your character wearing glasses?" maxlength="200" />
+						<button id="askBtn">Ask</button>
+					</div>
+					<div id="answerPanel" class="hidden">
+						<p id="questionText" class="muted"></p>
+						<div class="row">
+							<button data-answer="yes">Yes</button>
+							<button data-answer="no">No</button>
+							<button data-answer="unknown" class="secondary">Not sure</button>
+						</div>
+					</div>
+					<h3>Chat</h3>
+					<div id="chat" class="chat"></div>
+					<div class="row">
+						<input id="chatInput" placeholder="Type a message" maxlength="300" />
+						<button id="sendChatBtn">Send</button>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="/client.js"></script>
+</body>
+</html> 
